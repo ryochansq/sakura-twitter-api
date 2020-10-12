@@ -1,0 +1,26 @@
+service: sakura-twitter-api
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: ap-northeast-1
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+functions:
+  one:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+  two:
+    handler: handler.hello2
+    events:
+      - http:
+          path: hello2
+          method: get
