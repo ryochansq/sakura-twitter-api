@@ -25,7 +25,7 @@ functions:
     events:
       - http:
           path: access_token
-          method: get
+          method: post
   icon:
     handler: src/icon.get
     events:

@@ -24,7 +24,6 @@ def get(event, context):
     authenticate_url = "https://api.twitter.com/oauth/authenticate"
     authenticate_endpoint = '%s?oauth_token=%s' % (authenticate_url, request_token['oauth_token'])
 
-    print(authenticate_endpoint)
     body = {
         'authenticate_endpoint': authenticate_endpoint
     }
