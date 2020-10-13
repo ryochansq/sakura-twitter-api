@@ -1,7 +1,7 @@
 import json
 
 
-def main(event, context):
+def post(event, context):
     body = {
         'hoge': 'hello'
     }

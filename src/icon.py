@@ -4,7 +4,7 @@ from requests_oauthlib import OAuth1Session
 from urllib.parse import parse_qsl
 
 
-def main(event, context):
+def get(event, context):
     body = {
         'key': os.environ['API_KEY'],
         'secret': os.environ['API_SECRET']

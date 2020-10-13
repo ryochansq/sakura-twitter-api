@@ -15,25 +15,25 @@ plugins:
 
 functions:
   request_token:
-    handler: src/request_token.main
+    handler: src/request_token.get
     events:
       - http:
           path: request_token
           method: get
   access_token:
-    handler: src/access_token.main
+    handler: src/access_token.post
     events:
       - http:
           path: access_token
           method: get
   icon:
-    handler: src/icon.main
+    handler: src/icon.get
     events:
       - http:
           path: icon
           method: get
   tweet:
-    handler: src/tweet.main
+    handler: src/tweet.post
     events:
       - http:
           path: tweet
