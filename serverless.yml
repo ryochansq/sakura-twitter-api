@@ -26,12 +26,12 @@ functions:
       - http:
           path: access_token
           method: post
-  icon:
-    handler: src/icon.get
+  profile_image_url:
+    handler: src/profile_image_url.post
     events:
       - http:
-          path: icon
-          method: get
+          path: profile_image_url
+          method: post
   tweet:
     handler: src/tweet.post
     events:

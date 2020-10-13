@@ -14,12 +14,7 @@ def post(event, context):
     oauth_token = request_body['oauth_token']
     oauth_verifier = request_body['oauth_verifier']
 
-    twitter = OAuth1Session(
-        API_KEY,
-        API_SECRET,
-        oauth_token,
-        oauth_verifier,
-    )
+    twitter = OAuth1Session(API_KEY, API_SECRET, oauth_token, oauth_verifier)
 
     twitter_response = twitter.post(
         access_token_url,
@@ -32,7 +27,7 @@ def post(event, context):
         'access_token': access_token,
     }
     response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
+        'statusCode': 200,
+        'body': json.dumps(body)
     }
     return response
