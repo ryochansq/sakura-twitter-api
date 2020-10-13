@@ -1,14 +1,16 @@
 import json
 import os
+from requests_oauthlib import OAuth1Session
+from urllib.parse import parse_qsl
 
 
 def main(event, context):
     body = {
-        'key': os.environ['CONSUMER_KEY'],
-        'secret': os.environ['CONSUMER_SECRET']
+        'key': os.environ['API_KEY'],
+        'secret': os.environ['API_SECRET']
     }
     response = {
         "statusCode": 200,
-        "body": json.dumps(body)
+        "body": 'ok'
     }
     return response

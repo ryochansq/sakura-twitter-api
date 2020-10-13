@@ -17,6 +17,8 @@ var/
 *.egg
 .DS_Store
 __pycache__/
+venv/
+node_modules/
 
 # Serverless directories
 .serverless
