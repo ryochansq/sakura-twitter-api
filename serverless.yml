@@ -6,21 +6,32 @@ provider:
   name: aws
   runtime: python3.8
   region: ap-northeast-1
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+  environment:
+    CONSUMER_KEY: ${file(./env/env.yml):CONSUMER_KEY}
+    CONSUMER_SECRET: ${file(./env/env.yml):CONSUMER_SECRET}
 
 functions:
-  one:
-    handler: handler.hello
+  request_token:
+    handler: src/request_token.main
     events:
       - http:
-          path: hello
+          path: request_token
           method: get
-  two:
-    handler: handler.hello2
+  access_token:
+    handler: src/access_token.main
     events:
       - http:
-          path: hello2
+          path: access_token
           method: get
+  icon:
+    handler: src/icon.main
+    events:
+      - http:
+          path: icon
+          method: get
+  tweet:
+    handler: src/tweet.main
+    events:
+      - http:
+          path: tweet
+          method: post
