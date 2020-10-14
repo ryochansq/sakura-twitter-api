@@ -8,7 +8,7 @@ def get(event, context):
     API_KEY = os.environ['API_KEY']
     API_SECRET = os.environ['API_SECRET']
     request_token_url = 'https://api.twitter.com/oauth/request_token'
-    oauth_callback = 'https://ryochansq.github.io/sakura-card-maker/edit'
+    oauth_callback = 'https://ryochansq.github.io/sakura-card-maker/#/edit'
 
     twitter = OAuth1Session(API_KEY, API_SECRET)
 
