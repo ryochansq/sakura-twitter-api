@@ -44,8 +44,13 @@ https://ryochansq.github.io/sakura-card-maker/
 
     tweet_response = twitter.post(post_tweet_url, params=params)
 
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    }
     response = {
         'statusCode': 200,
+        'headers': headers,
         'body': tweet_response.text
     }
     return response

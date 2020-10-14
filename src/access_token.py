@@ -23,11 +23,16 @@ def post(event, context):
 
     access_token = dict(parse_qsl(twitter_response.content.decode('utf-8')))
 
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    }
     body = {
         'access_token': access_token,
     }
     response = {
         'statusCode': 200,
+        'headers': headers,
         'body': json.dumps(body)
     }
     return response

@@ -31,11 +31,16 @@ def post(event, context):
     root, ext = os.path.splitext(user['profile_image_url_https'])
     profile_image_url = root[0:-7] + ext
 
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    }
     body = {
         'profile_image_url': profile_image_url
     }
     response = {
         'statusCode': 200,
+        'headers': headers,
         'body': json.dumps(body)
     }
     return response

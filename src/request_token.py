@@ -24,11 +24,16 @@ def get(event, context):
     authenticate_url = 'https://api.twitter.com/oauth/authenticate'
     authenticate_endpoint = '%s?oauth_token=%s' % (authenticate_url, request_token['oauth_token'])
 
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type'
+    }
     body = {
         'authenticate_endpoint': authenticate_endpoint
     }
     response = {
         'statusCode': 200,
+        'headers': headers,
         'body': json.dumps(body)
     }
     return response
