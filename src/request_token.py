@@ -8,7 +8,7 @@ def get(event, context):
     API_KEY = os.environ['API_KEY']
     API_SECRET = os.environ['API_SECRET']
     request_token_url = 'https://api.twitter.com/oauth/request_token'
-    oauth_callback = "https://ryochansq.github.io/sakura-card-maker/"
+    oauth_callback = 'https://ryochansq.github.io/sakura-card-maker/'
 
     twitter = OAuth1Session(API_KEY, API_SECRET)
 
@@ -18,10 +18,10 @@ def get(event, context):
     )
 
     # responseからリクエストトークンを取り出す
-    request_token = dict(parse_qsl(response.content.decode("utf-8")))
+    request_token = dict(parse_qsl(response.content.decode('utf-8')))
 
     # リクエストトークンから連携画面のURLを生成
-    authenticate_url = "https://api.twitter.com/oauth/authenticate"
+    authenticate_url = 'https://api.twitter.com/oauth/authenticate'
     authenticate_endpoint = '%s?oauth_token=%s' % (authenticate_url, request_token['oauth_token'])
 
     body = {

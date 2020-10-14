@@ -21,7 +21,7 @@ def post(event, context):
         params={'oauth_verifier': oauth_verifier}
     )
 
-    access_token = dict(parse_qsl(twitter_response.content.decode("utf-8")))
+    access_token = dict(parse_qsl(twitter_response.content.decode('utf-8')))
 
     body = {
         'access_token': access_token,
