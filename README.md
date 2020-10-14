@@ -17,8 +17,6 @@ $ source venv/bin/activate
 
 ## AWS へのデプロイ
 
-docker を起動しておく
-
 ```sh
 (venv) $ sls deploy
 ```
