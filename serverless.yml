@@ -16,25 +16,125 @@ plugins:
 functions:
   request_token:
     handler: src/request_token.get
+    package:
+      include:
+        - src/custom_error
     events:
       - http:
           path: request_token
           method: get
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.path('$')
+            statusCodes:
+              200:
+                pattern: ''
+              500:
+                pattern: '.*"statusCode": 500,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/octet-stream'"
   access_token:
     handler: src/access_token.post
+    package:
+      include:
+        - src/custom_error
     events:
       - http:
           path: access_token
           method: post
-  profile_image_url:
-    handler: src/profile_image_url.post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.path('$')
+            statusCodes:
+              200:
+                pattern: ''
+              400:
+                pattern: '.*"statusCode": 400,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/octet-stream'"
+              401:
+                pattern: '.*"statusCode": 401,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/octet-stream'"
+              500:
+                pattern: '.*"statusCode": 500,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/octet-stream'"
+  icon:
+    handler: src/icon.post
+    package:
+      include:
+        - src/custom_error
     events:
       - http:
-          path: profile_image_url
+          path: icon
           method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.path('$')
+            statusCodes:
+              200:
+                pattern: ''
+              400:
+                pattern: '.*"statusCode": 400,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/octet-stream'"
+              500:
+                pattern: '.*"statusCode": 500,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/octet-stream'"
   tweet:
     handler: src/tweet.post
+    package:
+      include:
+        - src/custom_error
     events:
       - http:
           path: tweet
           method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.path('$')
+            statusCodes:
+              200:
+                pattern: ''
+              400:
+                pattern: '.*"statusCode": 400,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/json'"
+              500:
+                pattern: '.*"statusCode": 500,.*'
+                template: $input.path("$.errorMessage")
+                headers:
+                  Content-Type: "'application/json'"
