@@ -12,6 +12,8 @@ def post(event, context):
     logger = logging.getLogger()
     logLevel = logging.INFO
 
+    logger.info(event)
+
     API_KEY = os.environ['API_KEY']
     API_SECRET = os.environ['API_SECRET']
     post_media_url = 'https://upload.twitter.com/1.1/media/upload.json'
@@ -27,8 +29,11 @@ def post(event, context):
         logger.error('400 No params')
         raise ce.CustomError(400, 'No params')
 
-    image = request_body['image']
     access_token = request_body['access_token']
+
+    # base64形式のraw_imageの先頭の'data:image/png;base64,'を削除
+    raw_image = request_body['image']
+    image = raw_image[22:]
 
     try:
         oauth_token = access_token['oauth_token']
@@ -76,6 +81,6 @@ https://ryochansq.github.io/sakura-card-maker/
     response = {
         'statusCode': 200,
         'headers': headers,
-        'body': {}
+        'body': json.dumps({})
     }
     return response

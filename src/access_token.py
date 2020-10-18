@@ -11,6 +11,8 @@ def post(event, context):
     logger = logging.getLogger()
     logLevel = logging.INFO
 
+    logger.info(event)
+
     API_KEY = os.environ['API_KEY']
     API_SECRET = os.environ['API_SECRET']
     access_token_url = 'https://api.twitter.com/oauth/access_token'
